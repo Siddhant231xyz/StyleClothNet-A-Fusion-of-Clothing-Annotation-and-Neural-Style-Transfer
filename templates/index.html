@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Transfer App</title>
+    <style>
+        /* Center align the form */
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        /* Style the submit button */
+        #submit-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* Style the loading spinner container */
+        .loader {
+            display: none; /* Initially hidden */
+            margin: 20px auto;
+        }
+        
+        /* Style the loading spinner image */
+        .loading-gif {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Style Transfer App</h1>
+    <form action="/process" method="post" enctype="multipart/form-data" onsubmit="showLoader()">
+        <label for="sample_image">Sample Image:</label>
+        <input type="file" id="sample_image" name="sample_image" accept="image/*" required><br><br>
+        
+        <label for="style_image">Style Image:</label>
+        <input type="file" id="style_image" name="style_image" accept="image/*" required><br><br>
+        
+        <label for="iterations">Number of Iterations:</label>
+        <input type="number" id="iterations" name="iterations" value="100" min="1" required><br><br>
+        
+        <button id="submit-btn" type="submit">Process</button>
+        <div id="loader" class="loader">
+            <img src="load.gif" alt="Loading GIF" class="loading-gif">
+        </div>
+    </form>
+
+    <script>
+        function showLoader() {
+            document.getElementById("submit-btn").style.display = "none";
+            document.getElementById("loader").style.display = "block";
+        }
+    </script>
+</body>
+</html>
